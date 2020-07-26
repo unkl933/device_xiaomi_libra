@@ -15,6 +15,7 @@
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 $(call inherit-product, vendor/xiaomi/libra/libra-vendor.mk)
+$(call inherit-product, $(LOCAL_PATH)/go_libra.mk)
 
 # AAPT
 PRODUCT_AAPT_CONFIG := normal

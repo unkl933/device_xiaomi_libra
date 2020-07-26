@@ -212,3 +212,6 @@ on property:sys.boot_completed=1
 
 on property:sys.shutdown.requested=*
     stop per_proxy
+
+on property:ro.config.low_ram=true
+    mount none /system/vendor/etc/permissions/go_handheld_core_hardware.xml /system/vendor/etc/permissions/handheld_core_hardware.xml bind
