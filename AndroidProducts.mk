@@ -14,9 +14,9 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_libra.mk
+    $(LOCAL_DIR)/nad_libra.mk
 
 COMMON_LUNCH_CHOICES := \
-    lineage_libra-eng \
-    lineage_libra-user \
-    lineage_libra-userdebug
+    nad_libra-eng \
+    nad_libra-user \
+    nad_libra-userdebug

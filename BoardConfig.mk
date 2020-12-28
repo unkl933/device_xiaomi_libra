@@ -66,9 +66,6 @@ QCOM_BT_USE_BTNV := true
 QCOM_BT_USE_SMD_TTY := true
 WCNSS_FILTER_USES_SIBS := true
 
-# Build with SU
-WITH_SU := true
-
 # Camera
 TARGET_CAMERASERVICE_CLOSES_NATIVE_HANDLES := true
 TARGET_NEEDS_LEGACY_CAMERA_HAL1_DYN_NATIVE_HANDLE := true
@@ -80,25 +77,12 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 BOARD_CHARGER_ENABLE_SUSPEND := true
 
 # Dexpreopt
-# All apps are pre-compiled with "speed" filter in this rom, which conflicts with the build rules and needs a patch to work.
-# Patch: see "core/product.mk" and "target/product/runtime_libart.mk" of "repo/repo_17.diff" in "useful_android_scripts".
-# The "speed" filter provides bettter performance, but also make app installation longer than defualt values.
-# If you got trouble with "speed" filter, try using the following line instead:
-# WITH_DEXPREOPT ?= true
-DEX_PREOPT_DEFAULT := true
-DONT_DEXPREOPT_PREBUILTS := false
-LOCAL_DEX_PREOPT := true
-PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
-PRODUCT_DEX_PREOPT_BOOT_FLAGS := --compiler-filter=speed
-PRODUCT_DEX_PREOPT_DEFAULT_COMPILER_FILTER := speed
-PRODUCT_DEX_PREOPT_DEFAULT_FLAGS := --compiler-filter=speed
-PRODUCT_OTHER_JAVA_DEBUG_INFO := false
-PRODUCT_SYSTEM_SERVER_COMPILER_FILTER := speed
-PRODUCT_SYSTEM_SERVER_DEBUG_INFO := false
-USE_DEX2OAT_DEBUG := false
-WITH_DEXPREOPT := true
-WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY := false
-WITH_DEXPREOPT_DEBUG_INFO := false
+ifeq ($(HOST_OS),linux)
+  ifneq ($(TARGET_BUILD_VARIANT),eng)
+    WITH_DEXPREOPT ?= true
+  endif
+endif
+WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY ?= true
 
 # Display
 TARGET_SCREEN_DENSITY := 480
@@ -119,7 +103,7 @@ USE_DEVICE_SPECIFIC_LOC_API := true
 # Graphics
 BOARD_USES_ADRENO := true
 BOARD_USES_OPENSSL_SYMBOLS := true
-OVERRIDE_RS_DRIVER:= libRSDriver_adreno.so
+OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS := 0x2002000
 TARGET_USES_C2D_COMPOSITION := true
 TARGET_USES_GRALLOC1_ADAPTER := true
@@ -149,11 +133,11 @@ BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.selinux=permissive
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 BOARD_KERNEL_PAGESIZE := 4096
 TARGET_KERNEL_ARCH := arm64
-TARGET_KERNEL_CLANG_COMPILE := true
-TARGET_KERNEL_CLANG_PATH := /lib/llvm-11
-TARGET_KERNEL_CLANG_VERSION := 11.0
-TARGET_KERNEL_CONFIG := libra_defconfig
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := /bin/aarch64-linux-gnu-
+#TARGET_KERNEL_CLANG_COMPILE := true
+#TARGET_KERNEL_CLANG_PATH := /lib/llvm-11
+#TARGET_KERNEL_CLANG_VERSION := 11.0
+TARGET_KERNEL_CONFIG := libra_user_defconfig
+#TARGET_KERNEL_CROSS_COMPILE_PREFIX := /bin/aarch64-linux-gnu-
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/xiaomi/libra
 
@@ -205,7 +189,7 @@ VENDOR_SECURITY_PATCH := 2018-03-01
 
 # SELinux
 BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
-include device/qcom/sepolicy-legacy/sepolicy.mk
+include device/qcom/sepolicy-legacy-um/sepolicy.mk
 
 # Shims
 TARGET_LD_SHIM_LIBS += /system/vendor/lib/hw/camera.vendor.msm8992.so|libshim_camera.so:/system/vendor/lib/libmmcamera2_stats_algorithm.so|libshim_atomic.so:/system/vendor/lib64/libizat_core.so|libshim_get_process_name.so:/system/vendor/lib64/libril-qc-qmi-1.so|libshim_rild_socket.so
