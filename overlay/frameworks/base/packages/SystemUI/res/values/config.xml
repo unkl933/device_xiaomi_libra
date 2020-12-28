@@ -6,4 +6,6 @@
     <bool name="config_showActivity">true</bool>
     <!-- Smart replies in notifications: Whether we disable the feature unless the app targets P -->
     <bool name="config_smart_replies_in_notifications_requires_targeting_p">false</bool>
+    <!-- Allow device to force H265 encoder for screen record -->
+    <bool name="config_useNewScreenRecEncoder">false</bool>
 </resources>
