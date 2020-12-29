@@ -1,44 +1,44 @@
 [
   { 
     "remote":      "github",
-    "repository":  "vendor_xiaomi_libra",
+    "repository":  "NusantaraROM-Devices/vendor_xiaomi_libra",
     "target_path": "vendor/xiaomi/libra",
-    "revision":    "10"
+    "branch":      "10"
   },
   { 
     "remote":      "github",
-    "repository":  "kernel_xiaomi_libra",
+    "repository":  "NusantaraROM-Devices/kernel_xiaomi_libra",
     "target_path": "kernel/xiaomi/libra",
-    "revision":    "10"
+    "branch":      "10"
   },
   {
     "remote":      "github",
     "repository":  "LineageOS/android_hardware_xiaomi",
     "target_path": "hardware/xiaomi",
-    "revision":    "lineage-17.1"
+    "branch":      "lineage-17.1"
   },
   {
     "remote":      "github",
     "repository":  "LineageOS/android_hardware_sony_timekeep",
     "target_path": "hardware/sony/timekeep",
-    "revision":    "lineage-17.1"
+    "branch":      "lineage-17.1"
   },
   {
     "remote":      "github",
     "repository":  "LineageOS/android_hardware_qcom_display",
-    "target_path": "hardware/qcom-caf/msm8994/display,
-    "revision":    "lineage-17.1-caf-msm8994"
+    "target_path": "hardware/qcom-caf/msm8994/display",
+    "branch":      "lineage-17.1-caf-msm8994"
   },
   {
     "remote":      "github",
     "repository":  "LineageOS/android_hardware_qcom_audio",
-    "target_path": "hardware/qcom-caf/msm8994/audio,
-    "revision":    "lineage-17.1-caf-msm8994"
+    "target_path": "hardware/qcom-caf/msm8994/audio",
+    "branch":      "lineage-17.1-caf-msm8994"
   },
   {
     "remote":      "github",
     "repository":  "LineageOS/android_hardware_qcom_media",
-    "target_path": "hardware/qcom-caf/msm8994/media,
-    "revision":    "lineage-17.1-caf-msm8994"
+    "target_path": "hardware/qcom-caf/msm8994/media",
+    "branch":      "lineage-17.1-caf-msm8994"
   }
 ]
