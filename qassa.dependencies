@@ -1,16 +1,4 @@
 [
-  { 
-    "remote":      "github",
-    "repository":  "NusantaraROM-Devices/vendor_xiaomi_libra",
-    "target_path": "vendor/xiaomi/libra",
-    "branch":      "10"
-  },
-  { 
-    "remote":      "github",
-    "repository":  "NusantaraROM-Devices/kernel_xiaomi_libra",
-    "target_path": "kernel/xiaomi/libra",
-    "branch":      "10"
-  },
   {
     "remote":      "github",
     "repository":  "LineageOS/android_hardware_xiaomi",

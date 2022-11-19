@@ -14,9 +14,9 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/nad_libra.mk
+    $(LOCAL_DIR)/qassa_libra.mk
 
 COMMON_LUNCH_CHOICES := \
-    nad_libra-eng \
-    nad_libra-user \
-    nad_libra-userdebug
+    qassa_libra-eng \
+    qassa_libra-user \
+    qassa_libra-userdebug
